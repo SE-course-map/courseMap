@@ -30,4 +30,4 @@ cd SetUp
 sudo python3 addFirstUser.py
 cd ..
 
-sudo deactivate
+deactivate

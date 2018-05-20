@@ -17,11 +17,20 @@ app = Flask(__name__)
 app.secret_key = getRandomString(10)
 
 
+def protected(func):
+    def _decorate(*args, **kwargs):
+        if not SessionController.check():
+            flash('Session has expired', 'error')
+            return redirect(url_for('adminLogin'))
+        return func(*args, **kwargs)
+
+    _decorate.__name__ = func.__name__
+    return _decorate
+
+
 @app.route('/admin/', methods=['GET'])
+@protected
 def admin():
-    if not SessionController.check():
-        flash('Session has expired', 'error')
-        return redirect(url_for('adminLogin'))
     return render_template('admin.html')
 
 
@@ -41,10 +50,8 @@ def adminLogin():
 
 
 @app.route('/admin/register', methods=['POST', 'GET'])
+@protected
 def adminRegister():
-    if not SessionController.check():
-        flash('Session has expired', 'error')
-        return redirect(url_for('adminLogin'))
     if request.method == 'GET':
         return render_template('register.html')
     else:
@@ -70,11 +77,8 @@ def adminLogout():
 
 
 @app.route('/admin/users', methods=['GET'])
+@protected
 def adminUsers():
-    if not SessionController.check():
-        flash('Session has expired', 'error')
-        return redirect(url_for('adminLogin'))
-
     try:
         users = UserController.getAllUsersInfo()
         return render_template('users.html', users=users)
@@ -84,11 +88,8 @@ def adminUsers():
 
 
 @app.route('/admin/users/<int:id>', methods=['DELETE'])
+@protected
 def deleteUser(id):
-    if not SessionController.check():
-        flash('Session has expired', 'error')
-        return redirect(url_for('adminLogin'))
-
     try:
         UserController.remove(id)
         flash('Success', 'info')

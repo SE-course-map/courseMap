@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register a new User</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    <form method="post">
+        <p>Enter user name</p>
+        <input type="text" name="userName" id="userName"> <br/>
+        <p>Enter password</p>
+        <input type="password" name="rawPassword" id="rawPassword"> <br/>
+        <p>Reenter password</p>
+        <input type="password" name="rawPasswordConfirmation" id="rawPasswordConfirmation"> <br/>
+        <input type="submit" value="submit" onclick="return check()">
+    </form>
+
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+
+</body>
+</html>

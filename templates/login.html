@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in as existing user</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    <form method="post">
+        <p>Enter user name</p>
+        <input type="text" name="userName" id="userName"> <br/>
+        <p>Enter password</p>
+        <input type="password" name="rawPassword" id="rawPassword"> <br/>
+        <input type="submit" onClick="return check()">
+    </form>
+
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+</body>
+</html>

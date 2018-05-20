@@ -1,0 +1,9 @@
+{% with infos = get_flashed_messages(category_filter=["info"]) %}
+{% if infos %}
+
+{% for info in infos %}
+    <p style="color: green">{{ info }}</p>
+{% endfor %}
+
+{% endif %}
+{% endwith %}

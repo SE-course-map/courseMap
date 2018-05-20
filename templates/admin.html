@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin main page</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    <p>Hello it is admin panel</p>
+
+    <a href="{{ url_for('adminRegister') }}">Register new user</a> <br/>
+    <a href="{{ url_for('adminUsers') }}">Manage users</a> <br/>
+    <a href="{{ url_for('adminLogout') }}">Log out</a>
+
+</body>
+</html>

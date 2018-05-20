@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of all users</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    {% for user in users %}
+        <form method="post" action="{{ url_for('deleteUser', id=user[0]) }}">
+            <input type="hidden" name="_method" value="DELETE" />
+            <input type="submit" value="Delete user {{ user[1] }}" onclick="return check({{ users[1] }})">
+        </form>
+    {% endfor %}
+
+
+    <script src="{{ url_for('static', filename='js/users.js') }}"></script>
+</body>
+</html>

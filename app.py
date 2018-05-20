@@ -6,7 +6,7 @@ projectRootDirectory = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 sys.path.append(projectRootDirectory)
 
 
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, get_flashed_messages, Response
 from UserController.UserController import UserController, UserControllerError
 from UserController.User import User
 from SessionController.SessionController import SessionController
@@ -21,7 +21,7 @@ def protected(func):
     def _decorate(*args, **kwargs):
         if not SessionController.check():
             flash('Session has expired', 'error')
-            return redirect(url_for('adminLogin'))
+            return redirect(url_for('adminLogin')), 401
         return func(*args, **kwargs)
 
     _decorate.__name__ = func.__name__
@@ -42,6 +42,7 @@ def adminLogin():
         user = User.getFromForm()
         if UserController.check(user):
             SessionController.set(user)
+            get_flashed_messages()
             flash('Hello, %s' % (user.userName, ), 'info')
             return redirect(url_for('admin'))
         else:
@@ -56,7 +57,6 @@ def adminRegister():
         return render_template('register.html')
     else:
         user = User.getFromForm()
-
         try:
             UserController.add(user)
             flash('user %s was added successfully' % (user.userName, ), 'info')
@@ -93,10 +93,10 @@ def deleteUser(id):
     try:
         UserController.remove(id)
         flash('Success', 'info')
+        return Response(status=201)
     except Exception as e:
         flash('Database error', 'error')
-    finally:
-        return redirect(url_for('admin'))
+        return Response(status=500)
 
 
 if __name__ == '__main__':

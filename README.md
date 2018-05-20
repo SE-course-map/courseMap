@@ -10,7 +10,7 @@ You should have
 <p>Navigate to the root directory of the project and execute the following command</p>
 
 ```bash
-sudo bash SetUp.sh
+sudo bash Install.sh
 ```
 
 <p>Follow the instructions.</p>
@@ -22,4 +22,11 @@ sudo bash SetUp.sh
 
 ```bash
 sudo bash Run.sh
+```
+
+<h3>Uninstalling</h3>
+<p>Navigate to the root directory of the project and execute the following command</p>
+
+```bash
+sudo bash Uninstall.sh
 ```

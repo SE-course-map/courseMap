@@ -24,7 +24,7 @@ echo '___________________________________________________'
 
 echo 'ENTER MYSQL ROOT PASSWORD'
 sudo mysql -u root -p < SetUp/SetUpDb.sql
-sudo mysql -u courseMapUser -p1Qwert123asd < SetUp/SetUpUsers.sql
+sudo mysql -u courseMapUser -p1Qwert123asd., < SetUp/SetUpUsers.sql
 
 cd SetUp
 sudo python3 addFirstUser.py

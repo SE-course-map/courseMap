@@ -15,7 +15,7 @@ echo '|                INSTALLING PACKAGES              |'
 echo '___________________________________________________'
 
 sudo apt-get install python-dev libmysqlclient-dev
-sudo pip3 install < requirenments.txt
+sudo pip3 install -r requirenments.txt
 
 
 echo '___________________________________________________'

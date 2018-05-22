@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    <button onclick="return test()">Click me</button>
+
+    <p id="pRat"></p>
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/test.js') }}"></script>
+</body>
+</html>

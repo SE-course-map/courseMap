@@ -6,7 +6,7 @@ projectRootDirectory = os.path.abspath(os.path.join(os.getcwd(), os.pardir))
 sys.path.append(projectRootDirectory)
 
 
-from flask import Flask, render_template, request, redirect, url_for, flash, get_flashed_messages, Response
+from flask import Flask, render_template, request, redirect, url_for, flash, get_flashed_messages, Response, jsonify
 from UserController.UserController import UserController, UserControllerError
 from UserController.User import User
 from SessionController.SessionController import SessionController
@@ -97,6 +97,18 @@ def deleteUser(id):
     except Exception as e:
         flash('Database error', 'error')
         return Response(status=500)
+
+
+@app.route('/test/', methods=['GET', 'POST'])
+def test():
+    if request.method == 'GET':
+        return render_template('test.html')
+    else:
+        print(request.form['message'])
+        if 'message' not in request.form:
+            flash('No message in post request', 'error')
+            return Response(status=500)
+        return jsonify(message=request.form['message'] + ' it is response'), 201
 
 
 if __name__ == '__main__':

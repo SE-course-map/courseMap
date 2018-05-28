@@ -1,0 +1,78 @@
+hr{
+
+  height: 200px;
+  background-color: purple;
+  border: none;
+  text-align: center;
+
+}
+
+hr::before{
+
+  content: : "CS Course Map";
+  position: relative;
+  top: 25%;
+  padding: 1000px 0px;
+  color: white;
+  font-size: 65px;
+  font-family: "Comic Sans MS", Comic Sans, cursive;
+
+}
+
+ab{
+
+  position: absolute;
+  top: 80px;
+  right: 0;
+  width: 200px;
+  height: 100px;
+
+}
+
+.but{
+
+  background-color: purple;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  font-family: "Comic Sans MS", Comic Sans, cursive;
+
+}
+
+.lessons{
+
+  text-align: center;
+  width: 40%;
+  border: 1px solid black;
+  border-spacing: 1px;
+  margin: 0px auto;
+
+}
+
+.subject{
+
+  text-align: center;
+  width: 40%;
+  height: 25px;
+  border: 1px solid black;
+  border-spacing: 1px;
+  margin: 0px auto;
+
+}
+
+.choose-btn{
+  background-color: purple;
+  border: none;
+  width: 24.6%;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  font-size: 12px;
+  font-family: "Comic Sans MS", Comic Sans, cursive;
+  margin: 0px auto;
+}

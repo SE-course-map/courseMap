@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cs.css') }}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cs.js') }}"></script>
+</head>
+<body>
+
+  <header>
+    <a href="http://cs.ucu.edu.ua/"><img style="padding: 0 0 0 100px" src="{{ url_for('static', filename='images/logo.jpg') }}" width="125" height="125"></a>
+    <hr>
+  </header>
+
+  <div style="margin: 0px auto">
+
+   <button  name="btn1" id="btn1">Semester 1</button>
+   <button  name="btn2" id="btn2">Semester 2</button>
+   <button  name="btn3" id="btn3">Semester 3</button>
+   <button  name="btn4" id="btn4">Semester 4</button>
+
+ </div>
+
+  <div id="mp">
+
+  </div>
+
+</body>
+</html>

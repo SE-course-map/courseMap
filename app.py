@@ -110,6 +110,10 @@ def test():
             return Response(status=500)
         return jsonify(message=request.form['message'] + ' it is response'), 201
 
+@app.route('/cs/', methods=['GET', 'POST'])
+def cs():
+    return render_template('cs.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

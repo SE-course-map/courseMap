@@ -29,5 +29,5 @@ python3 app.py
 <p>Navigate to the root directory of the project and execute the following command</p>
 
 ```bash
-sudo rm -rf ./venv/
+sudo bash Uninstall.sh
 ```

@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/cs.js') }}"></script>
 </head>
 <body>
 
@@ -16,16 +15,124 @@
 
   <div style="margin: 0px auto">
 
-   <button  name="btn1" id="btn1">Semester 1</button>
-   <button  name="btn2" id="btn2">Semester 2</button>
-   <button  name="btn3" id="btn3">Semester 3</button>
-   <button  name="btn4" id="btn4">Semester 4</button>
+   <button class="choose-btn" onclick="show(1)">Semester 1</button>
+   <button class="choose-btn" onclick="show(2)">Semester 2</button>
+   <button class="choose-btn" onclick="show(3)">Semester 3</button>
+   <button class="choose-btn" onclick="show(4)">Semester 4</button>
 
  </div>
 
-  <div id="mp">
-
+  <div id="table1">
+>
+    <table style="margin:0px auto;">
+      <tr><th>Semester1</th></tr>
+      <tr><td class="prof">Discrete Math
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">Introduction to Programming
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">Analisys
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">English
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">Critical Thinking
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">History
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+    </table>
   </div>
 
+  <div id="table2">
+    <table style="margin:0px auto;">
+      <tr><th>Semester2</th></tr>
+      <tr><td class="prof">Discrete Math
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">Introduction to Programming
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">Analisys
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">English
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">C&AW
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">History
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+    </table>
+  </div>
+
+  <div id="table3">
+    <table style="margin:0px auto;">
+      <tr><th>Semester3</th></tr>
+      <tr><td class="prof">Linear Algebra
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">Object-Oriented Programming
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">Introduction to Algorithms
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">Creative Problem Solving
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">COP
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">Christianity
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">Elective Course
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+    </table>
+  </div>
+
+  <div id="table4">
+    <table style="margin:0px auto;">
+      <tr><th>Semester4</th></tr>
+      <tr><td class="prof">Theory of Probability and Statistics
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">CSA
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">OS
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">Social Enterpreneurship
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="prof">Databases
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">Chritianity
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+      <tr><td class="gym">Elective Course
+        <div class="poster"><div class="descr">About this course</div></div>
+      </td></tr>
+    </table>
+  </div>
+
+<script>
+function show(nr) {
+  document.getElementById("table1").style.display="none";
+  document.getElementById("table2").style.display="none";
+  document.getElementById("table3").style.display="none";
+  document.getElementById("table4").style.display="none";
+  document.getElementById("table"+nr).style.display="block";
+}
+</script>
 </body>
 </html>

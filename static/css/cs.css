@@ -1,6 +1,7 @@
 hr{
 
   height: 200px;
+  width: 100%;
   background-color: purple;
   border: none;
   text-align: center;
@@ -42,25 +43,32 @@ ab{
 
 }
 
-.lessons{
+tr{
 
   text-align: center;
-  width: 40%;
-  border: 1px solid black;
-  border-spacing: 1px;
-  margin: 0px auto;
-
-}
-
-.subject{
-
-  text-align: center;
-  width: 40%;
+  width: 75%;
   height: 25px;
   border: 1px solid black;
   border-spacing: 1px;
   margin: 0px auto;
+  height: 20px;
 
+}
+
+th{
+
+  text-align: center;
+  width: 75%;
+  height: 25px;
+  padding: 15px 32px;
+  margin: 0px auto;
+  height: 20px;
+
+}
+
+td {
+    border: 1px solid black;
+    height: 20px;
 }
 
 .choose-btn{
@@ -75,4 +83,46 @@ ab{
   font-size: 12px;
   font-family: "Comic Sans MS", Comic Sans, cursive;
   margin: 0px auto;
+}
+#table1, #table2, #table3, #table4 {
+    display: none;
+}
+
+.prof{
+  background-color: #1c7ff0;
+  color: white;
+  font-size: 12px;
+  font-family: "Comic Sans MS", Comic Sans, cursive, bold;
+}
+
+.gym{
+  background-color: #fb8c33;
+  color: white;
+  font-size: 12px;
+  font-family: "Comic Sans MS", Comic Sans, cursive, bold;
+}
+
+.poster{
+
+    margin:0px auto;
+    height:10px;
+    width:10px;
+}
+.descr{
+    display:none;
+    margin-left:0px;
+    padding:-20px;
+    margin-top:-30px;
+    background:#f3f3f3;
+    height:200px;
+    -moz-box-shadow:0 -5px -5px rgba(0,0,0,0.3);
+    -webkit-box-shadow:0 -5px -5px rgba(0,0,0,0.3);
+    box-shadow:0 -5px -5px rgba(0,0,0,0.3);
+}
+.poster:hover .descr{
+    display:block;
+    position:absolute;
+    top:50px;
+    z-index:1000;
+    width:400px;
 }

@@ -5,6 +5,10 @@
     <title>Manage existing courses</title>
 </head>
 <body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+    {% include 'adminHeader.html' %}
+
     {% if (semesters and blocks and courses) %}
     {% for course in courses %}
     {% set courseId = course[0] %}

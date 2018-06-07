@@ -1,3 +1,8 @@
 venv/
 .idea/
 hints.txt
+Common/__pycache__/*
+Connection/__pycache__/*
+Controller/__pycache__/*
+Essence/__pycache__/*
+SetUp/__pycache__/*

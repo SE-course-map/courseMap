@@ -14,9 +14,9 @@
         <input type="text" autocomplete="off" name="name"  id="name" /> <br />
         <p>Pick color for the block</p>
         <input type="color" name="color" id="color" /> <br /> <br />
-        <input type="submit" value="Submit" onclick="return check()">
+        <input type="submit" value="Submit" onclick="return checkEmpty(['name'])">
     </form>
 
-    <script src="{{ url_for('static', filename='js/addBlock.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/check.js') }}"></script>
 </body>
 </html>

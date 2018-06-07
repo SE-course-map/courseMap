@@ -22,7 +22,7 @@
             <p>Block color</p>
             <input type="color" value="{{ blockColor }}" name="color" /> <br /> <br />
             <input type="text" autocomplete="off" readonly hidden name="id" value="{{ blockId }}">
-            <input type="submit" value="Edit {{ blockName }}" onclick="return check({{ blockId }})">
+            <input type="submit" value="Edit {{ blockName }}" onclick="return checkEmpty(['name'], {{ blockId }})">
         </form> <br />
 
         <button onclick="return del('{{ blockName }}', '{{ url_for('deleteBlock', id=blockId) }}')">Delete {{ blockName }}</button> <br/>
@@ -31,7 +31,7 @@
     {% endfor %}
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/manageBlock.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/check.js') }}"></script>
     <script src="{{ url_for('static', filename='js/del.js') }}"></script>
 </body>
 </html>

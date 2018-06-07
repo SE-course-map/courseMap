@@ -12,10 +12,10 @@
     {% for user in users %}
         {% set userId = user[0] %}
         {% set userName = user[1] %}
-        <button onclick="return deleteUser('{{ userName }}', {{ userId }})">Delete user {{ userName }}</button>
+        <button onclick="return del('{{ userName }}', '{{ url_for('deleteUser', id=userId) }}')">Delete user {{ userName }}</button>
     {% endfor %}
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/users.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/del.js') }}"></script>
 </body>
 </html>

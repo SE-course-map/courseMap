@@ -42,7 +42,7 @@
             </select>
 
             <input type="text" autocomplete="off" hidden readonly value="{{ semesterId }}" name="id">
-            <input type="submit" value="Submit" onclick="return check({{ semesterId }})"> <br /> <br />
+            <input type="submit" value="Submit" onclick="return checkEmpty(['semester'] ,{{ semesterId }})"> <br /> <br />
             <button onclick="return del('{{ semesterName }}', '{{ url_for('deleteSemester', id=semesterId) }}')">Delete {{ semesterName }}</button>
         </form>
 
@@ -52,6 +52,6 @@
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/del.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/manageSemester.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/check.js') }}"></script>
 </body>
 </html>

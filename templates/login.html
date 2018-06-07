@@ -13,9 +13,9 @@
         <input type="text" autocomplete="off" name="userName" id="userName"> <br/>
         <p>Enter password</p>
         <input type="password" name="rawPassword" id="rawPassword"> <br/>
-        <input type="submit" onClick="return check()">
+        <input type="submit" onClick="return checkEmpty(['userName', 'rawPassword'])">
     </form>
 
-    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/check.js') }}"></script>
 </body>
 </html>

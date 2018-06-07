@@ -58,11 +58,12 @@
         <p>Fill in teacher</p>
         <input type="text" autocomplete="off" name="teacher" id="teacher"> <br />
 
-        <input type="submit" value="Submit" onclick="return check()">
+        <input type="submit" value="Submit" onclick="return checkCourse()">
     </form>
 
     {% endif %}
 
-    <script src="{{ url_for('static', filename='js/addCourse.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/check.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/checkCourse.js') }}"></script>
 </body>
 </html>

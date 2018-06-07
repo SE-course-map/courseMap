@@ -12,7 +12,7 @@
     {% if years %}
     {% for year in years %}
         {% set yearId = year[0] %}
-        {% set yearPosition = year[0] %}
+        {% set yearPosition = year[1] %}
         <button onclick="return del('{{ yearPosition }}', '{{ url_for('deleteYear', id=yearId) }}')">Delete year {{ yearPosition }}</button> <br />
     {% endfor %}
     {% endif %}

@@ -29,7 +29,7 @@
             {% endfor %}
         </select>
         <br /> <br />
-        <input type="submit" value="Submit" onclick="return check()">
+        <input type="submit" value="Submit" onclick="return checkEmpty(['name'])">
     </form>
     {% endif %}
 
@@ -37,6 +37,6 @@
     <p>You should first create years</p>
     {% endif %}
 
-    <script src="{{ url_for('static', filename='js/addSemester.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/check.js') }}"></script>
 </body>
 </html>

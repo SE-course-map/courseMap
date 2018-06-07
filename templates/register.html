@@ -16,9 +16,10 @@
         <input type="password" name="rawPassword" id="rawPassword"> <br/>
         <p>Reenter password</p>
         <input type="password" name="rawPasswordConfirmation" id="rawPasswordConfirmation"> <br/>
-        <input type="submit" value="submit" onclick="return check()">
+        <input type="submit" value="submit" onclick="return checkRegister()">
     </form>
 
+    <script src="{{ url_for('static', filename='js/check.js') }}"></script>
     <script src="{{ url_for('static', filename='js/register.js') }}"></script>
 
 </body>

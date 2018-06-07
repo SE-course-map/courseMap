@@ -256,9 +256,13 @@ def addCourse():
             blocks=BlockController.getAllBlockInfo()
         )
     else:
-        CourseController.add(Course.getFromForm())
-        flash('success', 'info')
+        try:
+            CourseController.add(Course.getFromForm())
+            flash('success', 'info')
+        except Exception as e:
+            flash(str(e), 'error')
         return redirect(url_for('addCourse'))
+
 
 
 @app.route('/admin/manageCourse/', methods=['GET', 'POST'])

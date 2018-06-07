@@ -1,18 +1,10 @@
-function check(){
-    var userName = document.getElementById("userName").value;
+function checkRegister(){
+    var args = ['userName', 'rawPassword', 'rawPasswordConfirmation'];
 
-    if(userName.length == 0){
-        alert("empty user name");
+    if(!checkEmpty(args))
         return false;
-    }
 
     var rawPassword = document.getElementById("rawPassword").value;
-
-    if(rawPassword.length == 0){
-        alert("empty password");
-        return false;
-    }
-
     var rawPasswordConfirmation = document.getElementById("rawPasswordConfirmation").value;
 
     if(rawPassword != rawPasswordConfirmation){

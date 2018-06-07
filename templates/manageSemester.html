@@ -20,7 +20,7 @@
 
         <form method="post">
             <p>Semester name</p>
-            <input type="text" value="{{ semesterName }}" name="name" id="semester{{ semesterId }}">
+            <input type="text" autocomplete="off" value="{{ semesterName }}" name="name" id="semester{{ semesterId }}">
             <p>Corresponding year</p>
             <select name="yearId">
                 {% for year in years %}
@@ -41,9 +41,9 @@
                 {% endfor %}
             </select>
 
-            <input type="text" hidden readonly value="{{ semesterId }}" name="id">
+            <input type="text" autocomplete="off" hidden readonly value="{{ semesterId }}" name="id">
             <input type="submit" value="Submit" onclick="return check({{ semesterId }})"> <br /> <br />
-            <button onclick="return deleteSemester({{ semesterId }}, '{{ semesterName }}')">Delete {{ semesterName }}</button>
+            <button onclick="return del('{{ semesterName }}', '{{ url_for('deleteSemester', id=semesterId) }}')">Delete {{ semesterName }}</button>
         </form>
 
         <p>-----------------------------</p>
@@ -51,6 +51,7 @@
     {% endif %}
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/del.js') }}"></script>
     <script src="{{ url_for('static', filename='js/manageSemester.js') }}"></script>
 </body>
 </html>

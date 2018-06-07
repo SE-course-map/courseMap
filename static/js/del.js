@@ -1,9 +1,9 @@
-function deleteYear(yearId, yearPosition){
-    if(!confirm("Do you really want to delete year " + yearPosition + " ?"))
+function del(textRepresentation, url){
+    if(!confirm("Do you really want to delete " + textRepresentation + "?"))
         return false;
 
     $.ajax({
-        url: "/admin/manageYear/" + yearId,
+        url: url,
         type: 'DELETE',
         statusCode: {
             201: function(result) {

@@ -20,7 +20,7 @@
 
     <form method="post">
         <p>Enter course name</p>
-        <input type="text" name="name" id="name"> <br />
+        <input type="text" autocomplete="off" name="name" id="name"> <br />
 
         <input type="checkbox" name="forCS" value="True" id="forCS"> For CS <br />
         <input type="checkbox" name="forBA" value="True" id="forBA"> For BA <br />
@@ -56,7 +56,7 @@
         <input type="number" step="0.1" name="credits" value="0">
 
         <p>Fill in teacher</p>
-        <input type="text" name="teacher" id="teacher"> <br />
+        <input type="text" autocomplete="off" name="teacher" id="teacher"> <br />
 
         <input type="submit" value="Submit" onclick="return check()">
     </form>

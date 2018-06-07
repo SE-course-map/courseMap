@@ -13,11 +13,11 @@
     {% for year in years %}
         {% set yearId = year[0] %}
         {% set yearPosition = year[0] %}
-        <button onclick="return deleteYear({{ yearId }}, {{ yearPosition }})">Delete year {{ yearPosition }}</button> <br />
+        <button onclick="return del('{{ yearPosition }}', '{{ url_for('deleteYear', id=yearId) }}')">Delete year {{ yearPosition }}</button> <br />
     {% endfor %}
     {% endif %}
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/manageYear.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/del.js') }}"></script>
 </body>
 </html>

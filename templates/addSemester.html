@@ -13,7 +13,7 @@
     {% if (years and minSemester and maxSemester) %}
     <form method="post">
         <p>Enter semester name</p>
-        <input type="text" name="name" id="name">
+        <input type="text" autocomplete="off" name="name" id="name">
         <p>Pick corresponding year</p>
         <select name="yearId" style="width: 10em;">
             {% for year in years %}

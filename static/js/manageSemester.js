@@ -8,21 +8,3 @@ function check(semesterId){
 
     return true;
 }
-
-function deleteSemester(semesterId, semesterName){
-    if(!confirm("Do you really want to delete " + semesterName + " ?"))
-        return false;
-
-    $.ajax({
-        url: "/admin/manageSemester/" + semesterId,
-        type: 'DELETE',
-        statusCode: {
-            201: function(result) {
-              location.reload();
-            },
-            500: function(result) {
-              location.reload();
-            }
-        }
-    });
-}

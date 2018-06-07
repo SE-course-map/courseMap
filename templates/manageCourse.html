@@ -26,8 +26,8 @@
     <p>---------------------------------------</p>
     <form method="post">
         <p>Course name</p>
-        <input type="text" hidden readonly value="{{ courseId }}" name="id">
-        <input type="text" value="{{ courseName }}" id="course{{ courseId }}" name="name"> <br/>
+        <input type="text" autocomplete="off" hidden readonly value="{{ courseId }}" name="id">
+        <input type="text" autocomplete="off" value="{{ courseName }}" id="course{{ courseId }}" name="name"> <br/>
 
         <input type="checkbox" {% if (courseForCS == 1) %}checked{% endif %} name="forCS"> For CS <br/>
         <input type="checkbox" {% if (courseForBA == 1) %}checked{% endif %} name="forBA"> For BA <br/>
@@ -63,10 +63,10 @@
         <input type="number" name="credits" step="0.1" value="{{ courseCredits }}" id="credits{{ courseId }}">
 
         <p>Fill in teacher</p>
-        <input type="text" name="teacher" id="teacher{{ courseId }}" value="{{ courseTeacher }}"> <br />
+        <input type="text" autocomplete="off" name="teacher" id="teacher{{ courseId }}" value="{{ courseTeacher }}"> <br />
 
         <input type="submit" value="Submit" onclick="return check({{ courseId }})" /> <br />
-        <button onclick="return deleteCourse({{ courseId }}, '{{ courseName }}')">Delete {{ courseName }}</button>
+        <button onclick="return del('{{ courseName }}', '{{ url_for('deleteCourse', id=courseId) }}')">Delete {{ courseName }}</button>
     </form>
     <p>---------------------------------------</p>
 
@@ -74,6 +74,7 @@
     {% endif %}
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/del.js') }}"></script>
     <script src="{{ url_for('static', filename='js/manageCourse.js') }}"></script>
 </body>
 </html>

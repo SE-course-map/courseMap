@@ -31,21 +31,3 @@ function check(courseId){
 
     return true;
 }
-
-function deleteCourse(courseId, courseName){
-    if(!confirm("Do you really want to delete " + courseName + " ?"))
-        return false;
-
-    $.ajax({
-        url: "/admin/manageCourse/" + courseId,
-        type: 'DELETE',
-        statusCode: {
-            201: function(result) {
-              location.reload();
-            },
-            500: function(result) {
-              location.reload();
-            }
-        }
-    });
-}

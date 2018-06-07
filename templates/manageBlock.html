@@ -18,19 +18,20 @@
 
         <form method="post">
             <p>Block name</p>
-            <input type="text" value="{{ blockName }}" name="name" id="name{{ blockId }}" />
+            <input type="text" autocomplete="off" value="{{ blockName }}" name="name" id="name{{ blockId }}" />
             <p>Block color</p>
             <input type="color" value="{{ blockColor }}" name="color" /> <br /> <br />
-            <input type="text" readonly hidden name="id" value="{{ blockId }}">
+            <input type="text" autocomplete="off" readonly hidden name="id" value="{{ blockId }}">
             <input type="submit" value="Edit {{ blockName }}" onclick="return check({{ blockId }})">
         </form> <br />
 
-        <button onclick="return deleteBlock({{ blockId }}, '{{ blockName }}')">Delete {{ blockName }}</button> <br/>
+        <button onclick="return del('{{ blockName }}', '{{ url_for('deleteBlock', id=blockId) }}')">Delete {{ blockName }}</button> <br/>
 
         <p>-----------------------------------</p>
     {% endfor %}
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/manageBlock.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/del.js') }}"></script>
 </body>
 </html>

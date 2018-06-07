@@ -9,7 +9,9 @@
     {% include 'error.html' %}
 
     {% for user in users %}
-        <button onclick="return deleteUser('{{ user[1] }}', {{ user[0] }})">Delete user {{ user[1] }}</button>
+        {% set userId = user[0] %}
+        {% set userName = user[1] %}
+        <button onclick="return deleteUser('{{ userName }}', {{ userId }})">Delete user {{ userName }}</button>
     {% endfor %}
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>

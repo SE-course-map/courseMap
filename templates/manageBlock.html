@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage existing blocks</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    {% for block in blocks %}
+        {% set blockId = block[0] %}
+        {% set blockName = block[1] %}
+        {% set blockColor = block[2] %}
+
+        <p>-----------------------------------</p>
+
+        <form method="post">
+            <p>Block name</p>
+            <input type="text" value="{{ blockName }}" name="name" id="name{{ blockId }}" />
+            <p>Block color</p>
+            <input type="color" value="{{ blockColor }}" name="color" /> <br /> <br />
+            <input type="text" readonly hidden name="id" value="{{ blockId }}">
+            <input type="submit" value="Edit {{ blockName }}" onclick="return check({{ blockId }})">
+        </form> <br />
+
+        <button onclick="return deleteBlock({{ blockId }}, '{{ blockName }}')">Delete {{ blockName }}</button> <br/>
+
+        <p>-----------------------------------</p>
+    {% endfor %}
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/manageBlock.js') }}"></script>
+</body>
+</html>

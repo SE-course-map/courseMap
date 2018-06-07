@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new year</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    {% if (minYear and maxYear) %}
+    <form method="post">
+        <p>Enter year number</p>
+        <select name="position" style="width: 10em">
+            {% for i in range(minYear, maxYear + 1) %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    {% endif %}
+</body>
+</html>

@@ -1,19 +1,52 @@
 import json
 import MySQLdb
 
+from Common.Exceptions import DbException
+
+
 def getCourseMapConnectionString():
-    jsonFile = open("SetUp/ConnectionStrings.json", "r")
+    try:
+        jsonFile = open("SetUp/ConnectionStrings.json", "r")
 
-    connectionString = json.loads(jsonFile.read())["courseMap"]
+        connectionString = json.loads(jsonFile.read())["courseMap"]
 
-    jsonFile.close()
+        jsonFile.close()
 
-    return connectionString
+        return connectionString
+    except:
+        raise DbException("Cannot get connection string")
 
 
-class CourseMapConnectionError(Exception):
-    def __init__(self, msg):
-        super().__init__(msg)
+def cursorDecorator(func):
+    def _decorate(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        except Exception as e:
+            raise DbException(str(e))
+
+    _decorate.__name__ = func.__name__
+    return _decorate
+
+
+class Cursor:
+    def __init__(self, cursor):
+        self.cursor = cursor
+
+    @cursorDecorator
+    def execute(self, operation, params=None):
+        self.cursor.execute(operation, params)
+
+    @cursorDecorator
+    def fetchone(self):
+        return self.cursor.fetchone()
+
+    @cursorDecorator
+    def fetchall(self):
+        return self.cursor.fetchall()
+
+    @cursorDecorator
+    def rowcount(self):
+        return self.cursor.rowcount
 
 
 class CourseMapConnection:
@@ -29,14 +62,17 @@ class CourseMapConnection:
         self.db = None
 
     def __enter__(self):
-        self.db = MySQLdb.connect(
-            host=CourseMapConnection.connectionInfo["Server"],
-            user=CourseMapConnection.connectionInfo["Uid"],
-            passwd=CourseMapConnection.connectionInfo["Pwd"],
-            db=CourseMapConnection.connectionInfo["Database"]
-        )
-        self.db.autocommit(True)
-        return self
+        try:
+            self.db = MySQLdb.connect(
+                host=CourseMapConnection.connectionInfo["Server"],
+                user=CourseMapConnection.connectionInfo["Uid"],
+                passwd=CourseMapConnection.connectionInfo["Pwd"],
+                db=CourseMapConnection.connectionInfo["Database"]
+            )
+            self.db.autocommit(True)
+            return self
+        except:
+            raise DbException("Cannot connect to course map database")
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.db.close()
@@ -44,5 +80,5 @@ class CourseMapConnection:
 
     def cursor(self):
         if self.db is None:
-            raise CourseMapConnectionError("use `with` keyword")
-        return self.db.cursor()
+            raise DbException("use `with` keyword")
+        return Cursor(self.db.cursor())

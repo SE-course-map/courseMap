@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage existing courses</title>
+</head>
+<body>
+    {% if (semesters and blocks and courses) %}
+    {% for course in courses %}
+    {% set courseId = course[0] %}
+    {% set courseName = course[1] %}
+    {% set courseForCS = course[2] %}
+    {% set courseForBA = course[3] %}
+    {% set courseSemesterId = course[4] %}
+    {% set courseBlockId = course[5] %}
+    {% set courseDescription = course[6] %}
+    {% set coursePrerequisites = course[7] %}
+    {% set courseOutcomes = course[8] %}
+    {% set courseCredits = course[9] %}
+    {% set courseTeacher = course[10] %}
+
+    <p>---------------------------------------</p>
+    <form method="post">
+        <p>Course name</p>
+        <input type="text" hidden readonly value="{{ courseId }}" name="id">
+        <input type="text" value="{{ courseName }}" id="course{{ courseId }}" name="name"> <br/>
+
+        <input type="checkbox" {% if (courseForCS == 1) %}checked{% endif %} name="forCS"> For CS <br/>
+        <input type="checkbox" {% if (courseForBA == 1) %}checked{% endif %} name="forBA"> For BA <br/>
+
+        <p>Semester</p>
+        <select name="semesterId">
+            {% for semester in semesters %}
+                {% set semesterId = semester[0] %}
+                {% set semesterName = semester[1] %}
+                <option value="{{ semesterId }}" {% if (courseSemesterId == semesterId) %}selected{% endif %}>{{ semesterName }}</option>
+            {% endfor %}
+        </select>
+
+        <p>Block</p>
+        <select name="blockId">
+            {% for block in blocks %}
+                {% set blockId = block[0] %}
+                {% set blockName = block[1] %}
+                <option value="{{ blockId }}" {% if (courseBlockId == blockId) %}selected{% endif %}>{{ blockName }}</option>
+            {% endfor %}
+        </select>
+
+        <p>Description</p>
+        <textarea name="description" id="description{{ courseId }}">{{ courseDescription }}</textarea>
+
+        <p>Prerequisites</p>
+        <textarea name="prerequisites" id="prerequisites{{ courseId }}">{{ coursePrerequisites }}</textarea>
+
+        <p>Outcomes</p>
+        <textarea name="outcomes" id="outcomes{{ courseId }}">{{ courseOutcomes }}</textarea>
+
+        <p>Credits</p>
+        <input type="number" name="credits" step="0.1" value="{{ courseCredits }}" id="credits{{ courseId }}">
+
+        <p>Fill in teacher</p>
+        <input type="text" name="teacher" id="teacher{{ courseId }}" value="{{ courseTeacher }}"> <br />
+
+        <input type="submit" value="Submit" onclick="return check({{ courseId }})" /> <br />
+        <button onclick="return deleteCourse({{ courseId }}, '{{ courseName }}')">Delete {{ courseName }}</button>
+    </form>
+    <p>---------------------------------------</p>
+
+    {% endfor %}
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/manageCourse.js') }}"></script>
+</body>
+</html>

@@ -10,8 +10,21 @@
 
     <p>Hello it is admin panel</p>
 
-    <a href="{{ url_for('adminRegister') }}">Register new user</a> <br/>
-    <a href="{{ url_for('adminUsers') }}">Manage users</a> <br/>
+    <a href="{{ url_for('adminRegister') }}">Register new user</a> <br />
+    <a href="{{ url_for('adminUsers') }}">Manage existing users</a> <br/> <br />
+
+    <a href="{{ url_for('addBlock') }}">Add new block</a> <br />
+    <a href="{{ url_for('manageBlock') }}">Manage existing blocks</a> <br /> <br />
+
+    <a href="{{ url_for('addYear') }}">Add new year</a> <br />
+    <a href="{{ url_for('manageYear') }}">Manage existing years</a> <br /> <br />
+
+    <a href="{{ url_for('addSemester') }}">Add new semester</a> <br />
+    <a href="{{ url_for('manageSemester') }}">Manage existing semesters</a> <br /> <br />
+
+    <a href="{{ url_for('addCourse') }}">Add new course</a> <br />
+    <a href="{{ url_for('manageCourse') }}">Manage existing courses</a> <br /> <br />
+
     <a href="{{ url_for('adminLogout') }}">Log out</a>
 
 </body>

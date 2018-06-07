@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage existing years</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    {% if years %}
+    {% for year in years %}
+        {% set yearId = year[0] %}
+        {% set yearPosition = year[0] %}
+        <button onclick="return deleteYear({{ yearId }}, {{ yearPosition }})">Delete year {{ yearPosition }}</button> <br />
+    {% endfor %}
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/manageYear.js') }}"></script>
+</body>
+</html>

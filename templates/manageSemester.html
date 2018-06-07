@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage existing semesters</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    {% if (years and semesters and minSemester and maxSemester) %}
+    {% for semester in semesters %}
+        {% set semesterId = semester[0] %}
+        {% set semesterName = semester[1] %}
+        {% set semesterYearId = semester[2] %}
+        {% set semesterPosition = semester[3] %}
+
+        <p>-----------------------------</p>
+
+        <form method="post">
+            <p>Semester name</p>
+            <input type="text" value="{{ semesterName }}" name="name" id="semester{{ semesterId }}">
+            <p>Corresponding year</p>
+            <select name="yearId">
+                {% for year in years %}
+                    {% set yearId = year[0] %}
+                    {% set yearPosition = year[1] %}
+
+                    <option value="{{ yearId }}" {% if semesterYearId == yearId %}selected="selected"{% endif %}>
+                        {{ yearPosition }}
+                    </option>
+                {% endfor %}
+            </select>
+            <p>Semester number within the year</p>
+            <select name="position">
+                {% for i in range(minSemester, maxSemester + 1) %}
+                    <option value="{{ i }}" {% if semesterPosition == i %}selected="selected"{% endif %}>
+                        {{ i }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <input type="text" hidden readonly value="{{ semesterId }}" name="id">
+            <input type="submit" value="Submit" onclick="return check({{ semesterId }})"> <br /> <br />
+            <button onclick="return deleteSemester({{ semesterId }}, '{{ semesterName }}')">Delete {{ semesterName }}</button>
+        </form>
+
+        <p>-----------------------------</p>
+    {% endfor %}
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/manageSemester.js') }}"></script>
+</body>
+</html>

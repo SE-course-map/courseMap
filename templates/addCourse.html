@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new course</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    {% if not semesters %}
+    <p>You should add semesters first</p>
+    {% endif %}
+    {% if not blocks %}
+    <p>You should add blocks first</p>
+    {% endif %}
+
+    {% if (semesters and blocks) %}
+
+    <form method="post">
+        <p>Enter course name</p>
+        <input type="text" name="name" id="name"> <br />
+
+        <input type="checkbox" name="forCS" value="True" id="forCS"> For CS <br />
+        <input type="checkbox" name="forBA" value="True" id="forBA"> For BA <br />
+
+        <p>Pick Semester</p>
+        <select name="semesterId">
+            {% for semester in semesters %}
+                {% set semesterId = semester[0] %}
+                {% set semesterName = semester[1] %}
+                <option value="{{ semesterId }}">{{ semesterName }}</option>
+            {% endfor %}
+        </select>
+
+        <p>Pick Block</p>
+        <select name="blockId">
+            {% for block in blocks %}
+                {% set blockId = block[0] %}
+                {% set blockName = block[1] %}
+                <option value="{{ blockId }}">{{ blockName }}</option>
+            {% endfor %}
+        </select>
+
+        <p>Fill in description</p>
+        <textarea name="description" id="description"></textarea>
+
+        <p>Fill in prerequisites</p>
+        <textarea name="prerequisites" id="prerequisites"></textarea>
+
+        <p>Fill in outcomes</p>
+        <textarea name="outcomes" id="outcomes"></textarea>
+
+        <p>Fill in credits</p>
+        <input type="number" step="0.1" name="credits" value="0">
+
+        <p>Fill in teacher</p>
+        <input type="text" name="teacher" id="teacher"> <br />
+
+        <input type="submit" value="Submit" onclick="return check()">
+    </form>
+
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/addCourse.js') }}"></script>
+</body>
+</html>

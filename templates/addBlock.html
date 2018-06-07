@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new block</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+    <form method="post">
+        <p>Enter name of the block</p>
+        <input type="text" name="name"  id="name" /> <br />
+        <p>Pick color for the block</p>
+        <input type="color" name="color" id="color" /> <br /> <br />
+        <input type="submit" value="Submit" onclick="return check()">
+    </form>
+
+    <script src="{{ url_for('static', filename='js/addBlock.js') }}"></script>
+</body>
+</html>

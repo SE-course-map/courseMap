@@ -6,4 +6,4 @@ CREATE TABLE courseMap.users(
     salt CHAR(32) NOT NULL,
     PRIMARY KEY(id),
     UNIQUE (userName)
-);
+) ENGINE = INNODB;

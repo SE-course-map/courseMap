@@ -8,8 +8,8 @@ os.chdir(projectRootDirectory)
 
 from json import loads
 
-from UserController.UserController import UserController
-from UserController.User import User
+from Controller.UserController import UserController
+from Essence.User import User
 
 jsonFile = open("SetUp/UserCredentials.json", "r")
 

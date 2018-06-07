@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new semester</title>
+</head>
+<body>
+    {% include 'info.html' %}
+    {% include 'error.html' %}
+
+
+    {% if (years and minSemester and maxSemester) %}
+    <form method="post">
+        <p>Enter semester name</p>
+        <input type="text" name="name" id="name">
+        <p>Pick corresponding year</p>
+        <select name="yearId" style="width: 10em;">
+            {% for year in years %}
+                {% set yearId = year[0] %}
+                {% set yearPosition = year[1] %}
+                <option value="{{ yearId }}">{{ yearPosition }}</option>
+            {% endfor %}
+        </select>
+        <p>Enter semester number within the year</p>
+        <select name="position" style="width: 10em;">
+            {% for i in range(minSemester, maxSemester + 1) %}
+                <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+        <br /> <br />
+        <input type="submit" value="Submit" onclick="return check()">
+    </form>
+    {% endif %}
+
+    {% if (not years) %}
+    <p>You should first create years</p>
+    {% endif %}
+
+    <script src="{{ url_for('static', filename='js/addSemester.js') }}"></script>
+</body>
+</html>

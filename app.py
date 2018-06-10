@@ -90,7 +90,7 @@ def adminLogout():
 @protected
 def adminUsers():
     try:
-        users = UserController.getAllUsersInfo()
+        users = UserController.getAll()
         return render_template('users.html', users=users)
     except Exception as e:
         flash(str(e), 'error')
@@ -128,7 +128,7 @@ def addBlock():
 def manageBlock():
     if request.method == 'GET':
         try:
-            return render_template('manageBlock.html', blocks=BlockController.getAllBlockInfo())
+            return render_template('manageBlock.html', blocks=BlockController.getAll())
         except Exception as e:
             flash(str(e), 'error')
             return redirect(url_for('admin'))
@@ -178,7 +178,7 @@ def addYear():
 @app.route('/admin/manageYear/', methods=['GET'])
 @protected
 def manageYear():
-    return render_template('manageYear.html', years=YearController.getAllYearInfo())
+    return render_template('manageYear.html', years=YearController.getAll())
 
 
 @app.route('/admin/manageYear/<int:id>', methods=['DELETE'])
@@ -199,7 +199,7 @@ def addSemester():
     if request.method == 'GET':
         return render_template(
             'addSemester.html',
-            years=YearController.getAllYearInfo(),
+            years=YearController.getAll(),
             minSemester=kMinSemesterPositionNum,
             maxSemester=kMaxSemesterPositionNum
         )
@@ -218,8 +218,8 @@ def manageSemester():
     if request.method == 'GET':
         return render_template(
             'manageSemester.html',
-            years=YearController.getAllYearInfo(),
-            semesters=SemesterController.getAllSemesterInfo(),
+            years=YearController.getAll(),
+            semesters=SemesterController.getAll(),
             minSemester=kMinSemesterPositionNum,
             maxSemester=kMaxSemesterPositionNum
         )
@@ -251,8 +251,8 @@ def addCourse():
     if request.method == 'GET':
         return render_template(
             'addCourse.html',
-            semesters=SemesterController.getAllSemesterInfo(),
-            blocks=BlockController.getAllBlockInfo()
+            semesters=SemesterController.getAll(),
+            blocks=BlockController.getAll()
         )
     else:
         try:
@@ -270,9 +270,9 @@ def manageCourse():
     if request.method == 'GET':
         return render_template(
             'manageCourse.html',
-            semesters=SemesterController.getAllSemesterInfo(),
-            blocks=BlockController.getAllBlockInfo(),
-            courses=CourseController.getAllCourseInfo()
+            semesters=SemesterController.getAll(),
+            blocks=BlockController.getAll(),
+            courses=CourseController.getAll()
         )
     else:
         try:

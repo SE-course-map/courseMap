@@ -1,8 +1,9 @@
 from Essence.Course import *
 from Connection.Connection import *
+from Controller.UpdateController import *
 
 
-class CourseController:
+class CourseController(UpdateController):
     @staticmethod
     def add(course):
         course.validate()
@@ -58,7 +59,7 @@ class CourseController:
             )
 
     @staticmethod
-    def getAllCourseInfo():
+    def getAll():
         with CourseMapConnection() as connection:
             cursor = connection.cursor()
             cursor.execute(""" SELECT id, name, forCS, forBA, semesterId, blockId, description, prerequisites, outcomes, credits, teacher, isEnglish FROM course """)

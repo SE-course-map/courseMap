@@ -1,8 +1,9 @@
 from Connection.Connection import *
 from Essence.Year import *
+from Controller.AbstractController import *
 
 
-class YearController:
+class YearController(AbstractController):
     @staticmethod
     def add(year):
         year.validate()
@@ -19,7 +20,7 @@ class YearController:
             cursor.execute(""" DELETE FROM year WHERE id=%s """, (yearId, ))
 
     @staticmethod
-    def getAllYearInfo():
+    def getAll():
         with CourseMapConnection() as connection:
             cursor = connection.cursor()
             cursor.execute(""" SELECT id, position FROM year """)

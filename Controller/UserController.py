@@ -1,9 +1,11 @@
 from Connection.Connection import *
 from Common.Login import *
 from Essence.User import *
+from Controller.AbstractController import *
+from Controller.CheckController import *
 
 
-class UserController:
+class UserController(CheckController):
     @staticmethod
     def add(user):
         user.validate()
@@ -38,7 +40,7 @@ class UserController:
             cursor.execute("""DELETE FROM users WHERE id=%s""", (userId,))
 
     @staticmethod
-    def getAllUsersInfo():
+    def getAll():
         with CourseMapConnection() as connection:
             cursor = connection.cursor()
             cursor.execute("""SELECT id, userName FROM users""")

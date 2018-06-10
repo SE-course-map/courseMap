@@ -1,8 +1,10 @@
 from Essence.Semester import *
 from Connection.Connection import *
+from Controller.UpdateController import *
+from Controller.CheckController import *
 
 
-class SemesterController:
+class SemesterController(UpdateController, CheckController):
     @staticmethod
     def add(semester):
         semester.validate()
@@ -54,7 +56,7 @@ class SemesterController:
             cursor.execute(""" DELETE FROM semester WHERE id=%s """, (semesterId, ))
 
     @staticmethod
-    def getAllSemesterInfo():
+    def getAll():
         with CourseMapConnection() as connection:
             cursor = connection.cursor()
             cursor.execute(""" SELECT id, name, yearId, position FROM semester """)

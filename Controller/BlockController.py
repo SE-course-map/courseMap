@@ -1,8 +1,9 @@
 from Essence.Block import *
 from Connection.Connection import *
+from Controller.UpdateController import *
 
 
-class BlockController:
+class BlockController(UpdateController):
     @staticmethod
     def add(block):
         block.validate()
@@ -16,7 +17,7 @@ class BlockController:
             )
 
     @staticmethod
-    def getAllBlockInfo():
+    def getAll():
         with CourseMapConnection() as connection:
             cursor = connection.cursor()
             cursor.execute(""" SELECT id, name, color FROM block """)

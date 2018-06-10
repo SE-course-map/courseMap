@@ -1,7 +1,7 @@
 -- set up semester table
 CREATE TABLE courseMap.semester(
     id INT NOT NULL AUTO_INCREMENT,
-    name CHAR(32) NOT NULL,
+    name CHAR(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
     yearId INT NOT NULL,
     position TINYINT NOT NULL,
 

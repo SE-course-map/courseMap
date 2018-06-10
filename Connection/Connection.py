@@ -67,7 +67,8 @@ class CourseMapConnection:
                 host=CourseMapConnection.connectionInfo["Server"],
                 user=CourseMapConnection.connectionInfo["Uid"],
                 passwd=CourseMapConnection.connectionInfo["Pwd"],
-                db=CourseMapConnection.connectionInfo["Database"]
+                db=CourseMapConnection.connectionInfo["Database"],
+                charset='utf8'
             )
             self.db.autocommit(True)
             return self

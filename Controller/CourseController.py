@@ -11,7 +11,7 @@ class CourseController:
             cursor = connection.cursor()
 
             cursor.execute(
-                """ INSERT INTO course (name, forCS, forBA, semesterId, blockId, description, prerequisites, outcomes, credits, teacher) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+                """ INSERT INTO course (name, forCS, forBA, semesterId, blockId, description, prerequisites, outcomes, credits, teacher, isEnglish) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
                 (
                     course.name,
                     course.forCS,
@@ -22,7 +22,8 @@ class CourseController:
                     course.prerequisites,
                     course.outcomes,
                     course.credits,
-                    course.teacher
+                    course.teacher,
+                    course.isEnglish
                 )
             )
 
@@ -39,7 +40,7 @@ class CourseController:
         with CourseMapConnection() as connection:
             cursor = connection.cursor()
 
-            cursor.execute(""" UPDATE course SET name=%s, forCS=%s, forBA=%s, semesterId=%s, blockId=%s, description=%s, prerequisites=%s, outcomes=%s, credits=%s, teacher=%s WHERE id=%s """,
+            cursor.execute(""" UPDATE course SET name=%s, forCS=%s, forBA=%s, semesterId=%s, blockId=%s, description=%s, prerequisites=%s, outcomes=%s, credits=%s, teacher=%s, isEnglish=%s WHERE id=%s """,
                 (
                    newCourse.name,
                    newCourse.forCS,
@@ -51,6 +52,7 @@ class CourseController:
                    newCourse.outcomes,
                    newCourse.credits,
                    newCourse.teacher,
+                   newCourse.isEnglish,
                    courseId
                )
             )
@@ -59,5 +61,5 @@ class CourseController:
     def getAllCourseInfo():
         with CourseMapConnection() as connection:
             cursor = connection.cursor()
-            cursor.execute(""" SELECT id, name, forCS, forBA, semesterId, blockId, description, prerequisites, outcomes, credits, teacher FROM course """)
+            cursor.execute(""" SELECT id, name, forCS, forBA, semesterId, blockId, description, prerequisites, outcomes, credits, teacher, isEnglish FROM course """)
             return cursor.fetchall()

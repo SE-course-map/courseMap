@@ -17,7 +17,8 @@ class Course:
                 request.form['prerequisites'],
                 request.form['outcomes'],
                 request.form['credits'],
-                request.form['teacher']
+                request.form['teacher'],
+                'isEnglish' in request.form
             )
         except Exception as e:
             raise FormException(str(e))
@@ -33,7 +34,8 @@ class Course:
             prerequisites,
             outcomes,
             credits,
-            teacher
+            teacher,
+            isEnglish
     ):
         self.name = name
         self.forCS = bool(forCS)
@@ -45,6 +47,7 @@ class Course:
         self.outcomes = outcomes
         self.credits = float(credits)
         self.teacher = teacher
+        self.isEnglish = isEnglish
 
     def validate(self):
         if len(self.name) == 0:

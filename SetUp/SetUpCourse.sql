@@ -11,6 +11,7 @@ CREATE TABLE courseMap.course(
     outcomes TEXT NOT NULL,
     credits FLOAT(3, 1),
     teacher CHAR(32) NOT NULL,
+    isEnglish BOOL NOT NULL,
 
     PRIMARY KEY(id),
     UNIQUE(name),

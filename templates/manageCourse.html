@@ -22,6 +22,7 @@
     {% set courseOutcomes = course[8] %}
     {% set courseCredits = course[9] %}
     {% set courseTeacher = course[10] %}
+    {% set courseIsEnglish = course[11] %}
 
     <p>---------------------------------------</p>
     <form method="post">
@@ -64,6 +65,9 @@
 
         <p>Fill in teacher</p>
         <input type="text" autocomplete="off" name="teacher" id="teacher{{ courseId }}" value="{{ courseTeacher }}"> <br />
+
+
+        <input type="checkbox" {% if (courseIsEnglish == 1) %}checked{% endif %} name="isEnglish" id="isEnglish{{ courseId }}"> Is in English <br/>
 
         <input type="submit" value="Submit" onclick="return checkCourse({{ courseId }})" /> <br />
         <button onclick="return del('{{ courseName }}', '{{ url_for('deleteCourse', id=courseId) }}')">Delete {{ courseName }}</button>

@@ -25,8 +25,8 @@
         <input type="checkbox" name="forCS" value="True" id="forCS"> For CS <br />
         <input type="checkbox" name="forBA" value="True" id="forBA"> For BA <br />
 
-        <p>Pick Semester</p>
-        <select name="semesterId">
+        <p>Pick Semester (ctrl for multiple semesters)</p>
+        <select name="semesterId" id="semesterId" multiple>
             {% for semester in semesters %}
                 {% set semesterId = semester[0] %}
                 {% set semesterName = semester[1] %}

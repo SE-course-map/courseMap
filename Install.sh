@@ -29,6 +29,7 @@ sudo mysql -u courseMapUser -p1Qwert123asd., < SetUp/SetUpBlock.sql
 sudo mysql -u courseMapUser -p1Qwert123asd., < SetUp/SetUpYear.sql
 sudo mysql -u courseMapUser -p1Qwert123asd., < SetUp/SetUpSemester.sql
 sudo mysql -u courseMapUser -p1Qwert123asd., < SetUp/SetUpCourse.sql
+sudo mysql -u courseMapUser -p1Qwert123asd., < SetUp/SetUpCourseSemester.sql
 
 cd SetUp
 ../venv/bin/python3 addFirstUser.py

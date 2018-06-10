@@ -4,7 +4,6 @@ CREATE TABLE courseMap.course(
     name CHAR(32) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
     forCS BOOL NOT NULL,
     forBA BOOL NOT NULL,
-    semesterId INT NOT NULL,
     blockId INT NOT NULL,
     description TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
     prerequisites TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
@@ -15,11 +14,6 @@ CREATE TABLE courseMap.course(
 
     PRIMARY KEY(id),
     UNIQUE(name),
-
-    FOREIGN KEY(semesterId)
-        REFERENCES courseMap.semester(id)
-        ON DELETE RESTRICT
-        ON UPDATE RESTRICT,
 
     FOREIGN KEY(blockId)
         REFERENCES courseMap.block(id)

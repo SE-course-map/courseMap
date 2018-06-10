@@ -15,14 +15,14 @@
     {% set courseName = course[1] %}
     {% set courseForCS = course[2] %}
     {% set courseForBA = course[3] %}
-    {% set courseSemesterId = course[4] %}
-    {% set courseBlockId = course[5] %}
-    {% set courseDescription = course[6] %}
-    {% set coursePrerequisites = course[7] %}
-    {% set courseOutcomes = course[8] %}
-    {% set courseCredits = course[9] %}
-    {% set courseTeacher = course[10] %}
-    {% set courseIsEnglish = course[11] %}
+    {% set courseBlockId = course[4] %}
+    {% set courseDescription = course[5] %}
+    {% set coursePrerequisites = course[6] %}
+    {% set courseOutcomes = course[7] %}
+    {% set courseCredits = course[8] %}
+    {% set courseTeacher = course[9] %}
+    {% set courseIsEnglish = course[10] %}
+    {% set relatedSemesters = course[11] %}
 
     <p>---------------------------------------</p>
     <form method="post">
@@ -34,11 +34,11 @@
         <input type="checkbox" {% if (courseForBA == 1) %}checked{% endif %} name="forBA" id="forBA{{ courseId }}"> For BA <br/>
 
         <p>Semester</p>
-        <select name="semesterId">
+        <select name="semesterId" id="semesterId{{ courseId }}" multiple>
             {% for semester in semesters %}
                 {% set semesterId = semester[0] %}
                 {% set semesterName = semester[1] %}
-                <option value="{{ semesterId }}" {% if (courseSemesterId == semesterId) %}selected{% endif %}>{{ semesterName }}</option>
+                <option value="{{ semesterId }}" {% if (semesterId in relatedSemesters) %}selected{% endif %}>{{ semesterName }}</option>
             {% endfor %}
         </select>
 

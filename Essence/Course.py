@@ -12,7 +12,7 @@ class Course(AbstractEssence):
                 request.form['name'],
                 'forCS' in request.form,
                 'forBA' in request.form,
-                request.form['semesterId'],
+                request.form.getlist('semesterId'),
                 request.form['blockId'],
                 request.form['description'],
                 request.form['prerequisites'],
@@ -42,7 +42,7 @@ class Course(AbstractEssence):
         self.name = name
         self.forCS = bool(forCS)
         self.forBA = bool(forBA)
-        self.semesterId = int(semesterId)
+        self.semesterId = list(map(int, semesterId))
         self.blockId = int(blockId)
         self.description = description
         self.prerequisites = prerequisites
@@ -52,6 +52,8 @@ class Course(AbstractEssence):
         self.isEnglish = isEnglish
 
     def validate(self):
+        if len(self.semesterId) == 0:
+            raise CourseNoSemesters("Course should have at least one semester")
         if len(self.name) == 0:
             raise CourseEmptyNameException("Course Name cannot be empty")
         if not self.forCS and not self.forBA:

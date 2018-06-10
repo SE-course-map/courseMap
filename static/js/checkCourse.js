@@ -19,5 +19,28 @@ function checkCourse(id=null){
         return false;
     }
 
+    var semesterId = null;
+    if(id == null)
+        semesterId = document.getElementById('semesterId');
+    else
+        semesterId = document.getElementById('semesterId' + id);
+    var options = semesterId && semesterId.options;
+    console.log(options);
+    if(options == null){
+        alert("Course should have at least one semester");
+        return false;
+    }
+    else{
+        var selectedNum = 0;
+        for(var i = 0; i < options.length; ++i)
+            if(options[i].selected)
+                ++selectedNum;
+
+        if(selectedNum == 0){
+            alert("Course should have at least one semester");
+            return false;
+        }
+    }
+
     return true;
 }

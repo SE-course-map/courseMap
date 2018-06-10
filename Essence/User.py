@@ -1,13 +1,14 @@
 from flask import request
 
 from Common.Exceptions import *
+from Essence.AbstractEssence import *
 
 
 kMinPasswordLength = 4
 kMinUserNameLength = 4
 
 
-class User:
+class User(AbstractEssence):
     @staticmethod
     def getFromForm():
         try:
@@ -16,6 +17,7 @@ class User:
             raise FormException(str(e))
 
     def __init__(self, userName, rawPassword):
+        super().__init__()
         self.userName = userName
         self.rawPassword = rawPassword
 

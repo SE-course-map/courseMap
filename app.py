@@ -148,7 +148,6 @@ def manageBlock():
 @app.route('/admin/manageBlock/<int:id>', methods=['DELETE'])
 @protected
 def deleteBlock(id):
-    print('HELLO')
     try:
         BlockController.remove(id)
         flash('Success', 'info')

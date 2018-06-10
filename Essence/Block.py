@@ -1,13 +1,13 @@
 from flask import request
 
 from Common.Exceptions import *
-
+from Essence.AbstractEssence import *
 
 kMinBlockNameLength = 4
 kBlockColorLength = 7
 
 
-class Block:
+class Block(AbstractEssence):
     @staticmethod
     def getFromForm():
         try:
@@ -16,6 +16,7 @@ class Block:
             raise FormException(str(e))
 
     def __init__(self, name, color):
+        super().__init__()
         self.name = name
         self.color = color
 

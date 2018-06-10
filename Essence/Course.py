@@ -1,9 +1,10 @@
 from flask import request
 
 from Common.Exceptions import *
+from Essence.AbstractEssence import *
 
 
-class Course:
+class Course(AbstractEssence):
     @staticmethod
     def getFromForm():
         try:
@@ -37,6 +38,7 @@ class Course:
             teacher,
             isEnglish
     ):
+        super().__init__()
         self.name = name
         self.forCS = bool(forCS)
         self.forBA = bool(forBA)

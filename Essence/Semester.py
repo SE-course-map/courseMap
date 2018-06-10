@@ -1,13 +1,14 @@
 from flask import request
 
 from Common.Exceptions import *
+from Essence.AbstractEssence import *
 
 
 kMinSemesterPositionNum = 1
 kMaxSemesterPositionNum = 10
 
 
-class Semester:
+class Semester(AbstractEssence):
     @staticmethod
     def getFromForm():
         try:
@@ -16,6 +17,7 @@ class Semester:
             raise FormException(str(e))
 
     def __init__(self, name, yearId, position):
+        super().__init__()
         self.name = name
         self.yearId = int(yearId)
         self.position = int(position)
